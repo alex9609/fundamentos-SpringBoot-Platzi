@@ -22,4 +22,9 @@ public class MyConfigurationBean {
         return new MyBeanWithDependencyImplement(myOperation);
     }
 
+    @Bean
+    public BeanConsultaCrudImpl beanConsultaCrud(){
+        return new BeanConsultaCrudImpl();
+    }
+
 }

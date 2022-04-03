@@ -1,5 +1,6 @@
 package com.fundamentosplatzi.springboot.fundamentos;
 
+import com.fundamentosplatzi.springboot.fundamentos.bean.BeanConsultaCrud;
 import com.fundamentosplatzi.springboot.fundamentos.bean.MyBean;
 import com.fundamentosplatzi.springboot.fundamentos.bean.MyBeanWithDependency;
 import com.fundamentosplatzi.springboot.fundamentos.component.ComponentDependency;
@@ -18,11 +19,15 @@ public class FundamentosApplication implements CommandLineRunner {
 
     private MyBeanWithDependency myBeanWithDependency;
 
+    //Dependencias
+    private BeanConsultaCrud beanConsultaCrud;
+
     //Acamos de inyectar la dependencia
-    public FundamentosApplication(@Qualifier("componentTwoImplement") ComponentDependency componentDependency,MyBean myBean,MyBeanWithDependency myBeanWithDependency) {
+    public FundamentosApplication(@Qualifier("componentTwoImplement") ComponentDependency componentDependency,MyBean myBean,MyBeanWithDependency myBeanWithDependency,BeanConsultaCrud beanConsultaCrud) {
         this.componentDependency = componentDependency;
         this.myBean = myBean;
         this.myBeanWithDependency = myBeanWithDependency;
+        this.beanConsultaCrud = beanConsultaCrud;
     }
 
     public static void main(String[] args) {
@@ -34,5 +39,6 @@ public class FundamentosApplication implements CommandLineRunner {
         componentDependency.saludar();
         myBean.print();
         myBeanWithDependency.printWithDependency();
+        beanConsultaCrud.buscar();
     }
 }
